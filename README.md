@@ -1,4 +1,8 @@
-## **Connecting to MySql from Spring boot in a reactive manner**
+# Features implemented
+
+* Connect to MySql in reactive mode from Spring boot
+* Handle exceptions
+* Test classes for above 85 percentile coverage
 
 #### Set up MySql database
 
@@ -8,6 +12,8 @@
   found [here](https://hub.docker.com/_/mysql)
 * Create payroll schema once connected to docker mysql container
 
-#### Maven command to build project
+#### Maven commands
 
-* mvn clean package -T 8
+* Build project : `mvn clean package -T 8`
+* Build docker image : `mvn clean compile jib:build`
+
