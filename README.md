@@ -4,7 +4,7 @@
   </a>
 </div>
 <h1 align="left">
-  <i>hey there</i>
+  <i>hey there ...</i>
   <img src="https://media.giphy.com/media/w1OBpBd7kJqHrJnJ13/giphy.gif" width="45"/>
 </h1>
 
@@ -68,7 +68,7 @@ This code base is based on Spring Data R2DBC with MySQL relational database.
 * Hit the APIs.
 
 Cheers ...
-<br/><br/><img src="https://media.giphy.com/media/1BhVFK6ejcQV86UtHl/giphy.gif" width="85"/>
+<br/><br/><img src="https://media.giphy.com/media/1BhVFK6ejcQV86UtHl/giphy.gif" width="100"/>
 
 
 
