@@ -108,7 +108,7 @@
                             <password>${gitlab-password}</password>
                         </auth>
                         <image>
-                            registry.gitlab.com/vasudevan.ajay/spring-mysql-reactive/reactive-mysql:${image.version}
+                            ${gitlab-image}
                         </image>
                     </to>
                     <container>

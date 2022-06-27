@@ -16,7 +16,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: registry.gitlab.com/vasudevan.ajay/spring-mysql-reactive/reactive-mysql:1.0.1
+    image: <<your-gitlab-image>>
     restart: on-failure
     env_file: ./.env
     ports:
