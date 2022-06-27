@@ -51,12 +51,14 @@ This code base is based on Spring Data R2DBC with MySQL relational database.
 
 * Run unit tests & build project : `mvn clean package -T 8`
 * Build & push docker image to
-  GitLab : `mvn clean install -T 4 -Dgitlab-image=<<your-image-name>> -Dgitlab-username=<<my-gitlab-username>> -Dgitlab-password=<<my-gitlab-password>>`
-  _your-image-name would be_ **registry.gitlab.com/<<my-gitlab-username>>/spring-mysql-reactive/reactive-mysql:1.0.1**
+  GitLab : `mvn clean install -T 4 -Dgitlab-image=<<my-gitlab-image>> -Dgitlab-username=<<my-gitlab-username>> -Dgitlab-password=<<my-gitlab-password>>`
+  . _my-gitlab-image would look like registry.gitlab.com/<your-gitlab-username>/spring-mysql-reactive/reactive-mysql:
+  1.0.1_
 
 
 4. #### Run the container image pulled from Gitlab
 
-* `docker login registry.gitlab.com -u <<my-gitlab-username>> -p <<my-gitlab-password>>`
-* `docker-compose up`
+* Run `docker login registry.gitlab.com -u <<my-gitlab-username>> -p <<my-gitlab-password>>`
+* Change <your-gitlab-image> to above the gitlab image in docker-compose.yml
+* Run `docker-compose up`
 
