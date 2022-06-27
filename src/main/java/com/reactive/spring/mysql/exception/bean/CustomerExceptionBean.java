@@ -1,9 +1,11 @@
-package com.aj.spring.mysql.exception.bean;
+package com.reactive.spring.mysql.exception.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @ToString
@@ -16,4 +18,5 @@ public class CustomerExceptionBean {
   private String errorCode;
   private String message;
   private String correlationid;
+  private List<Map<String, String>> errors;
 }

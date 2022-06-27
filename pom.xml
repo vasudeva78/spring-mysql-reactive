@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.aj.spring</groupId>
-    <artifactId>mysql</artifactId>
+    <artifactId>reactive-mysql</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>mysql</name>
@@ -20,16 +20,22 @@
 
     <properties>
         <java.version>11</java.version>
+        <image.version>1.0.1</image.version>
+        <exec.mainClass>com.reactive.spring.mysql.MysqlReactiveApplication</exec.mainClass>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -47,6 +53,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
+        <!--        test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -72,6 +85,60 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <from>
+                        <image>adoptopenjdk:11-jre-openj9</image>
+                    </from>
+                    <to>
+                        <auth>
+                            <username>${gitlab-username}</username>
+                            <password>${gitlab-password}</password>
+                        </auth>
+                        <image>
+                            registry.gitlab.com/vasudevan.ajay/spring-mysql-reactive/reactive-mysql:${image.version}
+                        </image>
+                    </to>
+                    <container>
+                        <user>12000:12000</user>
+                        <entrypoint>
+                            <arg>/bin/sh</arg>
+                            <arg>-c</arg>
+                            <arg>exec java -server -Xms32m -Xmx32m -Xss256k -XX:+UseG1GC -cp
+                                /app/resources:/app/classes:/app/libs/* ${exec.mainClass}
+                            </arg>
+                        </entrypoint>
+                        <format>Docker</format>
+                    </container>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+            <!-- we want this library to be built reproducibly -->
+            <plugin>
+                <groupId>io.github.zlika</groupId>
+                <artifactId>reproducible-build-maven-plugin</artifactId>
+                <version>0.15</version>
+                <executions>
+                    <execution>
+                        <id>run-when-packaged</id>
+                        <goals>
+                            <goal>strip-jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

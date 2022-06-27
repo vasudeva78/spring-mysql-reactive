@@ -1,8 +1,8 @@
-package com.aj.spring.mysql.service;
+package com.reactive.spring.mysql.service;
 
-import com.aj.spring.mysql.entity.Customer;
-import com.aj.spring.mysql.exception.types.CustomerException;
-import com.aj.spring.mysql.repository.CustomerRepository;
+import com.reactive.spring.mysql.entity.Customer;
+import com.reactive.spring.mysql.exception.types.CustomerException;
+import com.reactive.spring.mysql.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

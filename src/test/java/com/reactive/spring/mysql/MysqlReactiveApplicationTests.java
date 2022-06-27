@@ -1,13 +1,11 @@
-package com.aj.spring.mysql;
+package com.reactive.spring.mysql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MysqlApplicationTests {
+class MysqlReactiveApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+  @Test
+  void contextLoads() {}
 }

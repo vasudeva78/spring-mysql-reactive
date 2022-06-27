@@ -1,5 +1,8 @@
-package com.aj.spring.mysql.entity;
+package com.reactive.spring.mysql.entity;
 
+import com.reactive.spring.mysql.validation.CustomerAddressConstraint;
+import com.reactive.spring.mysql.validation.CustomerCountryConstraint;
+import com.reactive.spring.mysql.validation.CustomerNameConstraint;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -17,11 +20,14 @@ public class Customer {
   private Integer custId;
 
   @Column("name")
+  @CustomerNameConstraint
   private String name;
 
   @Column("address")
+  @CustomerAddressConstraint
   private String address;
 
   @Column("country")
+  @CustomerCountryConstraint
   private String country;
 }

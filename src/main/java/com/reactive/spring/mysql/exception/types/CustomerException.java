@@ -1,4 +1,4 @@
-package com.aj.spring.mysql.exception.types;
+package com.reactive.spring.mysql.exception.types;
 
 import lombok.*;
 

@@ -1,10 +1,10 @@
-package com.aj.spring.mysql.controller;
+package com.reactive.spring.mysql.controller;
 
-import com.aj.spring.mysql.entity.Customer;
-import com.aj.spring.mysql.exception.bean.CustomerExceptionBean;
-import com.aj.spring.mysql.exception.types.CustomerException;
-import com.aj.spring.mysql.repository.CustomerRepository;
-import com.aj.spring.mysql.service.CustomerService;
+import com.reactive.spring.mysql.entity.Customer;
+import com.reactive.spring.mysql.exception.bean.CustomerExceptionBean;
+import com.reactive.spring.mysql.exception.types.CustomerException;
+import com.reactive.spring.mysql.repository.CustomerRepository;
+import com.reactive.spring.mysql.service.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +91,23 @@ class CustomerControllerTest {
         .exchange()
         .expectStatus()
         .isCreated();
+  }
+
+  @Test
+  void saveCustomer_when_request_validation_error() {
+    Customer customer = new Customer(1, "name1", "address1", "country1");
+
+    Customer customerRequest = new Customer(1, "", "address1", "country1");
+    when(repository.save(customerRequest)).thenReturn(Mono.just(customer));
+
+    webClient
+        .post()
+        .uri("/customers")
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(BodyInserters.fromObject(customerRequest))
+        .exchange()
+        .expectStatus()
+        .isBadRequest();
   }
 
   @Test
