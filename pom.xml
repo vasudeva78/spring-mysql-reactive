@@ -116,8 +116,7 @@
                         <entrypoint>
                             <arg>/bin/sh</arg>
                             <arg>-c</arg>
-                            <arg>exec java -server -Xms32m -Xmx32m -Xss256k -XX:+UseG1GC -cp
-                                /app/resources:/app/classes:/app/libs/* ${exec.mainClass}
+                            <arg>exec java -server -Xms32m -Xmx32m -Xss256k -XX:+UseG1GC -cp /app/resources:/app/classes:/app/libs/* ${exec.mainClass}
                             </arg>
                         </entrypoint>
                         <format>Docker</format>
