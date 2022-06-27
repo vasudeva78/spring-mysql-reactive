@@ -62,3 +62,13 @@ This code base is based on Spring Data R2DBC with MySQL relational database.
 * Change <your-gitlab-image> to above the gitlab image in docker-compose.yml
 * Run `docker-compose up`
 
+5. #### Test APIs in Postman
+
+* Import **spring-mysql-reactive.postman_collection.json** in Postman.
+* Hit the APIs.
+
+Cheers ...
+<br/><br/><img src="https://media.giphy.com/media/1BhVFK6ejcQV86UtHl/giphy.gif" width="85"/>
+
+
+
