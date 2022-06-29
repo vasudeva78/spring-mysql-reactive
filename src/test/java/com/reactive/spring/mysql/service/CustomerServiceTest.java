@@ -1,7 +1,6 @@
 package com.reactive.spring.mysql.service;
 
 import com.reactive.spring.mysql.entity.Customer;
-import com.reactive.spring.mysql.exception.types.CustomerException;
 import com.reactive.spring.mysql.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -45,19 +44,5 @@ class CustomerServiceTest {
     StepVerifier.create(customerService.saveCustomer(customer))
         .expectNextMatches(customer1 -> customer1.getName().equals("name1"))
         .verifyComplete();
-  }
-
-  @Test
-  void saveCustomer_when_error() {
-    Customer customer = new Customer();
-    when(customerRepository.save(customer)).thenReturn(Mono.empty());
-
-    StepVerifier.create(customerService.saveCustomer(customer))
-        .expectErrorMatches(
-            throwable ->
-                throwable instanceof CustomerException
-                    && ((CustomerException) throwable).getErrorCode().equals("ERR-103"))
-        .log()
-        .verify();
   }
 }

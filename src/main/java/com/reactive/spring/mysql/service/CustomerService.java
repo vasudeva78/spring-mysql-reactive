@@ -1,7 +1,6 @@
 package com.reactive.spring.mysql.service;
 
 import com.reactive.spring.mysql.entity.Customer;
-import com.reactive.spring.mysql.exception.types.CustomerException;
 import com.reactive.spring.mysql.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +21,6 @@ public class CustomerService {
   }
 
   public Mono<Customer> saveCustomer(Customer customer) {
-    return this.customerRepository
-        .save(customer)
-        .publishOn(databaseTasks)
-        .switchIfEmpty(
-            Mono.error(
-                CustomerException.builder()
-                    .errorCode("ERR-103")
-                    .message("Error while saving data")
-                    .build()));
+    return this.customerRepository.save(customer).publishOn(databaseTasks);
   }
 }
