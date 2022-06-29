@@ -64,7 +64,7 @@ This code base is based on Spring Data R2DBC with MySQL relational database.
 
 5. #### Test APIs in Postman
 
-* Import **spring-mysql-reactive.postman_collection.json** in Postman.
+* Import **spring-reactive-urls.json** in Postman.
 * Hit the APIs.
 
 Cheers ...
