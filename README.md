@@ -1,10 +1,10 @@
 <div id="badges" align="right">
-  <a href="www.linkedin.com/in/ajay-vasudevan">
+  <a href="https://www.linkedin.com/in/ajay-vasudevan" target="_blank" rel="noopener noreferrer">
       <img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white&style=plastic" width="100" alt="LinkedIn Badge"/>
   </a>
 </div>
 <h1 align="left">
-  <i>hey there</i>
+  <i>hey there ...</i>
   <img src="https://media.giphy.com/media/w1OBpBd7kJqHrJnJ13/giphy.gif" width="45"/>
 </h1>
 
@@ -68,7 +68,7 @@ This code base is based on Spring Data R2DBC with MySQL relational database.
 * Hit the APIs.
 
 Cheers ...
-<br/><br/><img src="https://media.giphy.com/media/1BhVFK6ejcQV86UtHl/giphy.gif" width="85"/>
+<br/><br/><img src="https://media.giphy.com/media/1BhVFK6ejcQV86UtHl/giphy.gif" width="100"/>
 
 
 
